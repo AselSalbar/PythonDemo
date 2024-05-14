@@ -25,14 +25,14 @@ main_menu = gui.Menu(win)
 file_item = gui.Menu(main_menu)
 
 # пункты первой группы меню
-file_item.add_command(label='Новый')
-file_item.add_command(label='Открыть...')
-file_item.add_command(label='Сохранить как...')
+file_item.add_command(label=FILE_NEW)
+file_item.add_command(label=FILE_OPEN)
+file_item.add_command(label=FILE_SAVE)
 # разделитель
 file_item.add_separator()
-file_item.add_command(label='Выйти из программы')
+file_item.add_command(label=FILE_EXIT)
 # подключить группу к главному меню
-main_menu.add_cascade(label='Файл', menu=file_item)
+main_menu.add_cascade(label=MAIN_ITEM_FILE, menu=file_item)
 # подключить меню к окну
 win.config(menu=main_menu)
 
