@@ -6,10 +6,10 @@ from const import *
 win = gui.Tk()
 
 #создать размеры окна
-win.geometry(INIT_WIN_SIZE)
+win.geometry(INIT_WIN_SIZE )
 
 #задать заголовок
-win.title(MAIN_TITLE)
+win.title(MAIN_TITLE )
 
 #запустить окно (программу)
 win.mainloop()
