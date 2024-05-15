@@ -1,6 +1,7 @@
 # программа в стиле GUI
 import tkinter as gui
 from tkinter import messagebox
+from tkinter import filedialog
 from const import *
 
 def exit_clik():
@@ -12,10 +13,15 @@ def new_click():
     messagebox.showinfo('Пунк меню','Новый')
 def open_click():
     # обработчик выбора пункта Открыть
-    messagebox.showinfo('Пунк меню','Открыть')
+    file = filedialog.askopenfilename(filetypes=(('Python файл','.py'),
+                                                ('Текстовый файл', '.html'),
+                                                 ('ПДФ файл', '.pdf')))
+    # в заголовке имя файла
+    win.title(file.name)
+
 def save_click():
     # обработчик выбора пункта Сохранить
-    messagebox.showinfo('Пунк меню','Сохранить')
+    filedialog.asksaveasfilename()
 
 # создать главное окно программы
 win = gui.Tk()
