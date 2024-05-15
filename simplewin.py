@@ -1,11 +1,21 @@
 # программа в стиле GUI
 import tkinter as gui
+from tkinter import messagebox
 from const import *
 
 def exit_clik():
     # обработчик выбора пункта выход
     win.quit()
 
+def new_click():
+    # обработчик выбора пункта Новый
+    messagebox.showinfo('Пунк меню','Новый')
+def open_click():
+    # обработчик выбора пункта Открыть
+    messagebox.showinfo('Пунк меню','Открыть')
+def save_click():
+    # обработчик выбора пункта Сохранить
+    messagebox.showinfo('Пунк меню','Сохранить')
 
 # создать главное окно программы
 win = gui.Tk()
@@ -30,9 +40,9 @@ main_menu = gui.Menu(win)
 file_item = gui.Menu(main_menu)
 
 # пункты первой группы меню
-file_item.add_command(label=FILE_NEW)
-file_item.add_command(label=FILE_OPEN)
-file_item.add_command(label=FILE_SAVE)
+file_item.add_command(label=FILE_NEW, command=new_click)
+file_item.add_command(label=FILE_OPEN, command=open_click)
+file_item.add_command(label=FILE_SAVE, command=save_click)
 # разделитель
 file_item.add_separator()
 file_item.add_command(label=FILE_EXIT, command=exit_clik)
