@@ -2,6 +2,7 @@
 import tkinter as gui
 from tkinter import messagebox
 from tkinter import filedialog
+from tkinter import scrolledtext
 from const import *
 
 def exit_clik():
@@ -10,14 +11,19 @@ def exit_clik():
 
 def new_click():
     # обработчик выбора пункта Новый
-    messagebox.showinfo('Пунк меню','Новый')
+    editor.delete(1.0, gui.END)
 def open_click():
     # обработчик выбора пункта Открыть
-    file = filedialog.askopenfilename(filetypes=(('Python файл','.py'),
+    file = filedialog.askopenfile(filetypes=(('Python файл','.py'),
                                                 ('Текстовый файл', '.html'),
                                                  ('ПДФ файл', '.pdf')))
     # в заголовке имя файла
     win.title(file.name)
+    # очистить редактор
+    new_click()
+    # загрузить текст из файла в редактор
+    editor.insert(gui.END, file.read())
+
 
 def save_click():
     # обработчик выбора пункта Сохранить
@@ -56,6 +62,10 @@ file_item.add_command(label=FILE_EXIT, command=exit_clik)
 main_menu.add_cascade(label=MAIN_ITEM_FILE, menu=file_item)
 # подключить меню к окну
 win.config(menu=main_menu)
+
+# разместить в окне редактор текста
+editor = scrolledtext.ScrolledText(win, font=FONT_SIZE, wrap=gui.WORD)
+editor.pack(expand=True, fill=gui.BOTH)
 
 # запустить окно (программу)
 win.mainloop()
