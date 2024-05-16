@@ -4,6 +4,7 @@ from tkinter import messagebox
 from tkinter import filedialog
 from tkinter import scrolledtext
 from const import *
+import os
 
 def exit_clik():
     # обработчик выбора пункта выход
@@ -18,7 +19,7 @@ def open_click():
                                                 ('Текстовый файл', '.html'),
                                                  ('ПДФ файл', '.pdf')))
     # в заголовке имя файла
-    win.title(file.name)
+    win.title(os.path.basename(file.name))
     # очистить редактор
     new_click()
     # загрузить текст из файла в редактор
